@@ -1,6 +1,6 @@
 #!/bin/bash
 # dockerEngine setup by Shahab Khalid
-#NOTE: Machine must have certificates
+#NOTE: Machine must have certificates in /root/certs/
 yum install -y yum-utils
 
 yum-config-manager \
