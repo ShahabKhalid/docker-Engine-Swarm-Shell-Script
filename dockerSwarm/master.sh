@@ -1,7 +1,7 @@
 #!/bin/bash
 # dockerSwarm master setup by Shahab Khalid
 #NOTE: Machine must have certificates in /root/certs/
-yum install -y yum-utils
+#yum install -y yum-utils
 
 yum-config-manager \
     --add-repo \
@@ -18,8 +18,13 @@ rm -rf /var/run/docker.pid
 rm -rf /var/run/docker.sock
 service docker restart
 
-docker pull swarm
+#docker pull swarm
 
 a=$(docker run --rm swarm create)
-ocker run --restart=unless-stopped -d -p 3375:2375  -v /root/certs:/certs:Z swarm manage --tls --tlscacert=/certs/ca.pem --tlscert=/certs/server-cert.pem --tlskey=/certs/server-key.pem token://$a
-echo "Token is " + $a
+docker run --restart=unless-stopped -d -p 3375:2375  -v /root/certs:/certs:Z swarm manage --tls --tlscacert=/certs/ca.pem --tlscert=/certs/server-cert.pem --tlskey=/certs/server-key.pem token://$a
+
+sudo firewall-cmd --zone=public --add-port=3375/tcp --permanent
+sudo firewall-cmd --reload
+
+echo "Token is"  $a
+
