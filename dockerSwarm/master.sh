@@ -1,7 +1,7 @@
 #!/bin/bash
 # dockerSwarm master setup by Shahab Khalid
 #NOTE: Machine must have certificates in /root/certs/
-#yum install -y yum-utils
+yum install -y yum-utils
 
 yum-config-manager \
     --add-repo \
