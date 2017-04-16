@@ -1,5 +1,7 @@
 # docker-Engine-Swarm-Shell-Script
 
+## ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) NOTE: Machine must have certificates in /root/certs/
+
 # Docker Engine
 ```
 sh dockerEngine.sh
