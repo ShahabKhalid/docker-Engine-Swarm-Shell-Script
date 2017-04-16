@@ -13,8 +13,8 @@ yum install docker-ce
 
 sed -i '/ExecStart=\/usr\/bin\/dockerd/c\ExecStart=/usr/bin/dockerd --selinux-enabled --tls=true --tlscacert=/root/certs/ca.pem --tlscert=/root/certs/server-cert.pem --tlskey=/root/certs/server-key.pem -H tcp://0.0.0.0:2376' /usr/lib/systemd/system/docker.service
 
-systemctl disable firewalld
-
+sudo firewall-cmd --zone=public --add-port=2376/tcp --permanent
+sudo firewall-cmd --reload
 echo 'export DOCKER_TLS_VERIFY="1"
   export DOCKER_HOST="tcp://localhost:2376"
   export DOCKER_CERT_PATH="/root/certs"' >> ~/.bashrc

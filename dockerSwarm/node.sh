@@ -18,3 +18,6 @@ rm -rf /var/run/docker.pid
 rm -rf /var/run/docker.sock
 service docker restart
 
+#opening port
+sudo firewall-cmd --zone=public --add-port=2375/tcp --permanent
+sudo firewall-cmd --reload
